@@ -3,57 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\ViewModels\ActorsViewModel;
 use Illuminate\Support\Facades\Http;
+use App\ViewModels\ActorViewModel;
 
-
-
-
-
-
-class MoviesController extends Controller
+class ActorsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($page=1)
     {
-        //poular Movies section
-        $popularMovies = Http::get('https://api.themoviedb.org/3/movie/popular?api_key=b326a28c7e2b236e9fb9b0f7d2b3d2c5')
-            ->json()['results'];
+          //poular Movies section
+          $popularActors = Http::get('https://api.themoviedb.org/3/person/popular?page='.$page.'&api_key=b326a28c7e2b236e9fb9b0f7d2b3d2c5')
+          ->json()['results'];
+          $viewModel = new ActorsViewModel($popularActors,$page);
+          
 
-
-        $genresArray = Http::get('https://api.themoviedb.org/3/genre/movie/list?api_key=b326a28c7e2b236e9fb9b0f7d2b3d2c5')
-        ->json()['genres'];
-        
-        $genres= collect($genresArray)->mapWithKeys(function($genre){
-
-            return [$genre['id'] =>$genre['name'] ];
-        } );
-
-       
-            
-        // NowPlaying Section
-        $topRatedMovies = Http::get('https://api.themoviedb.org/3/movie/top_rated?api_key=b326a28c7e2b236e9fb9b0f7d2b3d2c5')
-        ->json()['results'];
-
-        //dd($topRatedMovies);
-        
-        return view('movies.index',[
-
-            
-            'popularMovies'     =>  $popularMovies,
-            'genres'            =>  $genres,
-            'topRatedMovies'  =>  $topRatedMovies,
-
-        
-
-
-        ]);
-
-        
+        return view('actors.index',$viewModel);
     }
 
     /**
@@ -85,26 +54,14 @@ class MoviesController extends Controller
      */
     public function show($id)
     {
-
-
-        
-        // Movie Details
-
-        $movie = Http::get('https://api.themoviedb.org/3/movie/'.$id.'?append_to_response=credits,videos,images&api_key=b326a28c7e2b236e9fb9b0f7d2b3d2c5')
-        ->json();
+        $actor = Http::get('https://api.themoviedb.org/3/person/'.$id.'?api_key=b326a28c7e2b236e9fb9b0f7d2b3d2c5')->json();
+        $social = Http::get('https://api.themoviedb.org/3/person/'.$id.'/external_ids/?api_key=b326a28c7e2b236e9fb9b0f7d2b3d2c5')->json();
+        $credits = Http::get('https://api.themoviedb.org/3/person/'.$id.'/combined_credits/?api_key=b326a28c7e2b236e9fb9b0f7d2b3d2c5')->json();
 
         
+        $viewModel = new ActorviewModel($actor,$social,$credits);
 
-
-       //dump($movie);
-
-        return view('movies.show',[
-
-            "moviedetails"=>$movie,
-            
-
-
-        ]);
+        return view('actors.show', $viewModel);
     }
 
     /**

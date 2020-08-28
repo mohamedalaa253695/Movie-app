@@ -117,7 +117,9 @@
 
                        <div class="mt-8">
             
-                        <a href="#">
+
+            
+                       <a href="{{route('actors.show',$cast['id'])}}">
                               <img src="{{'https://image.tmdb.org/t/p/w300/'.$cast['profile_path']}}" alt="parasie" class="hover:opacity-75 transition ease-in-out duration-150">    
                        </a>   
                        <div class="mt-2">
