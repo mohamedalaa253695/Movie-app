@@ -12,9 +12,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', 'MoviesController@index')->name('movies.index') ;
 Route::get('/movies/{movie}', 'MoviesController@show')->name('movies.show') ;
+
+Route::get('/tv', 'TvController@index')->name('tv.index') ;
+Route::get('/tv/{id}', 'TvController@show')->name('tv.show') ;
+
 
 
 Route::get('/actors', 'ActorsController@index')->name('actors.index') ;

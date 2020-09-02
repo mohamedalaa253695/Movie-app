@@ -1,0 +1,22 @@
+[2020-09-02 20:01:10.135] [main] [info] update#setState idle
+[2020-09-02 20:01:40.141] [main] [info] update#setState checking for updates
+[2020-09-02 20:01:40.722] [main] [info] update#setState idle
+[2020-09-02 21:01:40.183] [main] [info] update#setState checking for updates
+[2020-09-02 21:01:40.281] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+    at SimpleURLLoaderWrapper.<anonymous> (electron/js2c/browser_init.js:2657:21)
+    at SimpleURLLoaderWrapper.emit (events.js:203:13)
+[2020-09-02 21:01:40.282] [main] [info] update#setState idle
+[2020-09-02 22:01:40.187] [main] [info] update#setState checking for updates
+[2020-09-02 22:01:40.236] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+    at SimpleURLLoaderWrapper.<anonymous> (electron/js2c/browser_init.js:2657:21)
+    at SimpleURLLoaderWrapper.emit (events.js:203:13)
+[2020-09-02 22:01:40.236] [main] [info] update#setState idle
+[2020-09-02 23:01:40.212] [main] [info] update#setState checking for updates
+[2020-09-02 23:01:40.637] [main] [info] update#setState idle
+[2020-09-03 00:01:40.237] [main] [info] update#setState checking for updates
+[2020-09-03 00:01:40.263] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+    at SimpleURLLoaderWrapper.<anonymous> (electron/js2c/browser_init.js:2657:21)
+    at SimpleURLLoaderWrapper.emit (events.js:203:13)
+[2020-09-03 00:01:40.264] [main] [info] update#setState idle
+[2020-09-03 01:01:40.261] [main] [info] update#setState checking for updates
+[2020-09-03 01:01:42.423] [main] [info] update#setState idle
